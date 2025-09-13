@@ -81,4 +81,25 @@ Partial Public Class AddIn
 
 
     End Sub
+
+    Public Sub SetVariables_CardVersion(poFile As IEdmFile5, fileEnumerator As IEdmEnumeratorVariable8, ByRef poVariables As Dictionary(Of String, String), ByRef _StringBuilder As StringBuilder)
+        Dim variableNames As String() = poVariables.Keys.ToArray()
+
+        Dim variableName As String = Nothing
+
+
+        For Each variableName In variableNames
+            Try
+                Dim variableValue As Object = poVariables(variableName)
+
+                fileEnumerator.SetVar(variableName, "@", variableValue)
+
+            Catch ex As Exception
+                _StringBuilder.AppendLine(poFile.Name & $"[{variableName}]" & ": " & ex.Message)
+            End Try
+        Next
+
+
+
+    End Sub
 End Class

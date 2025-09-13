@@ -2,7 +2,7 @@
 Imports EPDM.Interop.epdm
 
 Partial Public Class AddIn
-    Private Sub HandlesCardButtonClick(ppoData() As EdmCmdData, vault As IEdmVault5, loggedInUser As IEdmUser5)
+    Private Sub HandlesCardButtonClick(poCmd As EdmCmd, ppoData() As EdmCmdData, vault As IEdmVault5, loggedInUser As IEdmUser5)
         Dim affectedItem = ppoData.First()
 
         If affectedItem.mlObjectID1 = 0 Then
@@ -71,7 +71,8 @@ Partial Public Class AddIn
         GetVariables(associatedModel, associatedModelFolder, variables, errorLogs)
 
 
-        SetVariables(affectedDocument, affectedDocumentFolder, variables, errorLogs)
+
+        SetVariables_CardVersion(affectedDocument, poCmd.mpoExtra, variables, errorLogs)
 
 
     End Sub

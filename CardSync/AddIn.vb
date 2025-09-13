@@ -67,7 +67,7 @@ Partial Public Class AddIn
 
 
                 'handle card button click
-                HandlesCardButtonClick(ppoData, vault, loggedInUser)
+                HandlesCardButtonClick(poCmd, ppoData, vault, loggedInUser)
 
 
                 If String.IsNullOrWhiteSpace(errorLogs.ToString()) = False Then
@@ -77,8 +77,7 @@ Partial Public Class AddIn
 
                 vault.MsgBox(handle, $"Sync complete{er}", EdmMBoxType.EdmMbt_OKOnly, ADDIN_NAME)
 
-                'unfortunately there is no way to refresh the datcard 
-                'please vote here for DS to add it: https://r1132100503382-eu1-3dswym.3dexperience.3ds.com/community/swym:prd:R1132100503382:community:I23-EB1ZRQyk2sLG5y9Kig?content=swym:prd:R1132100503382:idea:RMWyoOyfRRmz4qHmAsJjDA
+
 
             ElseIf (poCmd.meCmdType = EdmCmdType.EdmCmd_Menu And poCmd.mlCmdID = Commands.Sync) Then
                 'handle menu settings
